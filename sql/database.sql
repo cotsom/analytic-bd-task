@@ -10,9 +10,8 @@ CREATE TABLE Products (
 CREATE TABLE Suppliers (
     `SupplierID` INT PRIMARY KEY,
     `Name` VARCHAR(100) NOT NULL,
-    `ContactPerson` VARCHAR(100),
-    `Phone` VARCHAR(20),
-    `Email` VARCHAR(100)
+    `Company` VARCHAR(100),
+    `Phone` VARCHAR(20)
 );
 
 -- Создание таблицы "Клиенты"

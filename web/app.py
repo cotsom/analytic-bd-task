@@ -47,7 +47,7 @@ def index():
         
 
         if user_answer[0][0] == right_answer[0][0]:
-            return render_template('index.html', tasks=tasks, answer='Ебать мой лысый череп, ты чертовски прав!')
+            return render_template('index.html', tasks=tasks, answer=f'Ебать мой лысый череп, ты чертовски прав, ответ {right_answer[0][0]}')
         else:
             return render_template('index.html', tasks=tasks, answer='Not correct')
 

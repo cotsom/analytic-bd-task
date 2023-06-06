@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <div class="container">
     <h1>{% block title %} Sandbox {% endblock %}</h1>
     <form method="POST">
-        <input type="text" name="query" placeholder="SELECT * FROM Table;">
+      <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="SELECT * FROM Table;" name="query">
+      <button class="btn btn-outline-danger" type="submit">send</button>
+      </div>
     </form>
-
-
+    
     <table class="table table-striped table-dark">
         <thead>
           <tr>
@@ -26,4 +29,5 @@
         </tbody>
       </table>
     {{ error }}
+  </div>
 {% endblock %}

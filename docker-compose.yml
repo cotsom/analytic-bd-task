@@ -4,7 +4,7 @@ services:
     build: ./db
     container_name: db
     environment:
-      POSTGRES_DB: "technique"
+      POSTGRES_DB: "electronics"
       POSTGRES_USER: "root"
       POSTGRES_PASSWORD: "password"
     volumes:
@@ -14,9 +14,11 @@ services:
   web:
     build: ./web
     environment:
-        - MYSQL_DATABASE=technique
-        - MYSQL_ROOT_PASSWORD=password
+        - DB_NAME=electronics
+        - DB_PASSWORD=57ud3n7
         - PYTHONUNBUFFERED=1
     restart: always
     ports:
       - "5000:5000"
+
+      

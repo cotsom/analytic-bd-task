@@ -3,6 +3,7 @@ from flask import Flask, render_template, render_template_string, request
 import psycopg2
 import random
 import os
+import json
 
 app = Flask(__name__)
 
@@ -17,21 +18,44 @@ def dbConnect():
 
     return mydb
 
+def parse_tasks(file):
+    with open(file, 'r') as task_file:
+        tasks = json.load(task_file)
+        return tasks
+        
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # mydb = dbConnect()
-    # cursor = mydb.cursor()
+    tasks = parse_tasks('tasks.json')
 
-    # sql = "INSERT INTO Products(ProductID, Name, Category, Price) VALUES (%s, %s, %s, %s)"
-    # val = (1, "hui", "chqweleni&pezdi", 9999)
+    if request.method == 'POST':
+        mydb = dbConnect()
+        cursor = mydb.cursor()
 
-    # cursor.execute(sql, val)
+        task_id = int(request.form.get('task_id'))
+        user_query = request.form.get('query')
+        right_query = tasks['tasks'][task_id]['answerQuery']
 
-    # mydb.commit()
+        try:
+            cursor.execute(user_query)
+            user_answer = cursor.fetchall()
+
+            cursor.execute(right_query)
+            right_answer = cursor.fetchall()
+        except Exception as e:
+            return render_template('index.html', tasks=tasks, answer='Not correct')
+        
+
+        if user_answer[0][0] == right_answer[0][0]:
+            return render_template('index.html', tasks=tasks, answer='Ебать мой лысый череп, ты чертовски прав!')
+        else:
+            return render_template('index.html', tasks=tasks, answer='Not correct')
+
+        print(user_answer[0][0])
+        print(right_answer[0][0])
     
 
-    return render_template('index.html')
+    return render_template('index.html', tasks=tasks)
 
 @app.route("/query", methods=["GET", "POST"])
 def query():

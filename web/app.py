@@ -43,7 +43,16 @@ def products_filling(product_file, category_file):
         id = id+1
     mydb.commit()
 
-# def supliers_filling():
+def supliers_filling():
+    mydb = dbConnect()
+    cursor = mydb.cursor()
+
+    items_number = 5
+    products = []
+    category = []
+
+    product_lines = open(product_file).read().splitlines()
+    category_lines = open(category_file).read().splitlines()
 
 
 
@@ -59,7 +68,7 @@ def index():
 
     # mydb.commit()
     
-    products_filling("products.txt", 'product_category.txt')
+    products_filling("datasets/Products/products.txt", 'datasets/Products/product_category.txt')
 
     return "test"
 

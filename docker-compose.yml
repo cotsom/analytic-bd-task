@@ -1,20 +1,20 @@
 version: "3.9"
 services:
   db:
-    image: mariadb
-    container_name: mariadb
-    restart: always
+    build: ./db
+    container_name: db
     environment:
-      - MYSQL_DATABASE=TechnicalStore
-      - MYSQL_ROOT_PASSWORD=password
+      POSTGRES_DB: "technique"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "password"
     volumes:
-    - ./sql:/docker-entrypoint-initdb.d:ro
+      - ./db/sql:/docker-entrypoint-initdb.d/
     ports:
-      - "3306:3306"
-  app:
-    build: .
+      - "5432:5432"
+  web:
+    build: ./web
     environment:
-        - MYSQL_DATABASE=TechnicalStore
+        - MYSQL_DATABASE=technique
         - MYSQL_ROOT_PASSWORD=password
         - PYTHONUNBUFFERED=1
     restart: always

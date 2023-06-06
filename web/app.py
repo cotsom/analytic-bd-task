@@ -51,10 +51,6 @@ def index():
         else:
             return render_template('index.html', tasks=tasks, answer='Not correct')
 
-        print(user_answer[0][0])
-        print(right_answer[0][0])
-    
-
     return render_template('index.html', tasks=tasks)
 
 @app.route("/query", methods=["GET", "POST"])

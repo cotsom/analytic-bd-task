@@ -25,8 +25,12 @@ def parse_tasks(file):
 
 tasks = parse_tasks('tasks.json')
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
+    return render_template('index.html')
+
+@app.route("/tasks", methods=["GET", "POST"])
+def main():
     if request.method == 'POST':
         mydb = dbConnect()
         cursor = mydb.cursor()
@@ -42,16 +46,16 @@ def index():
             cursor.execute(right_query)
             right_answer = cursor.fetchall()
         except Exception as e:
-            return render_template('index.html', tasks=tasks, answer='Not correct')
+            return render_template('tasks.html', tasks=tasks, answer='Not correct')
         
 
         if user_answer == right_answer:
             tasks['tasks'][task_id]['taskState'] = f'Ебать мой лысый череп, ты чертовски прав, ответ {right_answer[0][0]}'
-            return render_template('index.html', tasks=tasks)
+            return render_template('tasks.html', tasks=tasks)
         else:
-            return render_template('index.html', tasks=tasks, answer='Not correct')
+            return render_template('tasks.html', tasks=tasks, answer='Not correct')
 
-    return render_template('index.html', tasks=tasks)
+    return render_template('tasks.html', tasks=tasks)
 
 @app.route("/query", methods=["GET", "POST"])
 def query():

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Tasks {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Tasks</h1>
+        {% for task in tasks['tasks'] %}
+            <div class="card">
+                <div class="card-header">
+                Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">{{task['description']}}</p>
+                    <form method="POST">
+                        <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="sql query" name="query">
+                        <input type="hidden" name="task_id" value="{{ task['id'] }}">
+                        <button class="btn btn-outline-danger" type="submit">send</button>
+                        </div>
+                    </form>
+                    {{task['taskState']}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

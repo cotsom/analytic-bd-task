@@ -5,6 +5,11 @@
     <title>{% block title %} {% endblock %} - FlaskApp</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+        @font-face{
+            font-family: trial;
+            src: url('static/mrrobot.otf');
+            font-weight: bold;
+        }
         body {
             background-color: #111;
             color: #fff;
@@ -31,11 +36,16 @@
         hr{
             background-color: #d64161;
         }
+        .cover-heading{
+            font-family:trial; 
+            color: red;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">Tasks</a>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('main') }}">Tasks</a>
         <a href="{{ url_for('query') }}">Sandbox</a>
     </nav>
     <hr>

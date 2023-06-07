@@ -1,28 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %} Tasks {% endblock %}
+{% block title %} Main {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Tasks</h1>
-        {% for task in tasks['tasks'] %}
-            <div class="card">
-                <div class="card-header">
-                Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">{{task['description']}}</p>
-                    <form method="POST">
-                        <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="sql query" name="query">
-                        <input type="hidden" name="task_id" value="{{ task['id'] }}">
-                        <button class="btn btn-outline-danger" type="submit">send</button>
-                        </div>
-                    </form>
-                    {{task['taskState']}}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+<div class="container text-center d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">HUI POIMI CHTO</h1>
+      <p class="lead">a small application that will allow you to practice writing sql queries and solving analytical problems. You have a database of a technical store and tasks in which you must write an sql query to find the information you need</p>
+      <p class="lead">
+        <a href="{{ url_for('main') }}" class="btn btn-outline-danger">TASKS</a>
+      </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>The footing <a href="#">footering</a>, by <a href="#">footer</a>.</p>
+      </div>
+    </footer>
+</div>
 {% endblock %}

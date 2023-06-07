@@ -7,15 +7,27 @@
     <main role="main" class="inner cover">
       <h1 class="cover-heading">HUI POIMI CHTO</h1>
       <p class="lead">a small application that will allow you to practice writing sql queries and solving analytical problems. You have a database of a technical store and tasks in which you must write an sql query to find the information you need</p>
-      <p class="lead">
-        <a href="{{ url_for('main') }}" class="btn btn-outline-danger">TASKS</a>
-      </p>
-    </main>
-
-    <footer class="mastfoot mt-auto">
-      <div class="inner">
-        <p>The footing <a href="#">footering</a>, by <a href="#">footer</a>.</p>
+      
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tasks</h5>
+              <p class="card-text">Here you can get tasks or submit a ready sql query as an answer, each task has a limited number of attempts to submit</p>
+              <a href="#" class="btn btn-outline-danger">See quests</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sandbox</h5>
+              <p class="card-text">Here you can start the tasks that you get, using playground to perform sql queries to the database</p>
+              <a href="#" class="btn btn-outline-danger">See sandbox</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
+    </main>
 </div>
 {% endblock %}

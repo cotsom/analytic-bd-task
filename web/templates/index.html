@@ -14,7 +14,7 @@
             <div class="card-body">
               <h5 class="card-title">Tasks</h5>
               <p class="card-text">Here you can get tasks or submit a ready sql query as an answer, each task has a limited number of attempts to submit</p>
-              <a href="#" class="btn btn-outline-danger">See quests</a>
+              <a href="{{ url_for('main') }}" class="btn btn-outline-danger">See quests</a>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="card-body">
               <h5 class="card-title">Sandbox</h5>
               <p class="card-text">Here you can start the tasks that you get, using playground to perform sql queries to the database</p>
-              <a href="#" class="btn btn-outline-danger">See sandbox</a>
+              <a href="{{ url_for('query') }}" class="btn btn-outline-danger">See sandbox</a>
             </div>
           </div>
         </div>

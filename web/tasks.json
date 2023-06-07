@@ -3,7 +3,14 @@
         {
             "id": 0,
             "description": "Найдите самый дорогой товар в таблице products. Ваш запрос должен выводить только название этого товара",
-            "answerQuery": "SELECT title FROM products WHERE price = (SELECT MAX(price) FROM products);"
+            "answerQuery": "SELECT title FROM products WHERE price = (SELECT MAX(price) FROM products);",
+            "taskState": "Not solved"
+        },
+        {
+            "id": 1,
+            "description": "Как зовут человека, который сделал заказ последним. Ваш запрос должен выводить только имя этого человека",
+            "answerQuery": "select firstname from customers where customerid = (select customerid from orders where orderid = 5);",
+            "taskState": "Not solved"
         }
     ]
 }

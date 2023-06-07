@@ -22,12 +22,11 @@ def parse_tasks(file):
     with open(file, 'r') as task_file:
         tasks = json.load(task_file)
         return tasks
-        
+
+tasks = parse_tasks('tasks.json')
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    tasks = parse_tasks('tasks.json')
-
     if request.method == 'POST':
         mydb = dbConnect()
         cursor = mydb.cursor()
@@ -46,8 +45,9 @@ def index():
             return render_template('index.html', tasks=tasks, answer='Not correct')
         
 
-        if user_answer[0][0] == right_answer[0][0]:
-            return render_template('index.html', tasks=tasks, answer=f'Ебать мой лысый череп, ты чертовски прав, ответ {right_answer[0][0]}')
+        if user_answer == right_answer:
+            tasks['tasks'][task_id]['taskState'] = f'Ебать мой лысый череп, ты чертовски прав, ответ {right_answer[0][0]}'
+            return render_template('index.html', tasks=tasks)
         else:
             return render_template('index.html', tasks=tasks, answer='Not correct')
 
